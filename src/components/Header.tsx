@@ -8,12 +8,14 @@ type HeaderProps ={
     image:{
         src:string;
         alt:string;
+        width?: string;
+        height?: string;
     }
    children: ReactNode;
 }
 const Header = ({image,children}:HeaderProps) => {
     return (<>
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar  bg="primary" data-bs-theme="dark">
             <Container>
                 <Navbar.Brand href="/">{children}</Navbar.Brand>
                    {/* <Image src ={image.src} alt={image.alt} className="header-image" /> */}
