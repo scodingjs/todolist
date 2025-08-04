@@ -1,8 +1,8 @@
 type GoalProps = {
  title: string;
     description: string;
-    priority: string;
-    dueDate: string;
+    priority: "High" | "Medium" | "Low";
+    dueDate: string | Date;
     status: string;
     id: number;
 }

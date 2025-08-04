@@ -1,16 +1,18 @@
 import Header from "./components/Header"
-import Goal from "./components/Goal"
+// import Goal from "./components/Goal"
 import InputGoal from "./components/InputGoal";
-
+// import todoList from "./resources/data/todoList.json";
 import './App.css'
 import { useState } from 'react';
 import todo from "./assets/todo.png"
+import AllGoals from "./components/AllGoals";
 
 type Todo = {
   title: string;
   description: string;
   status: "todo" | "in-progress" | "done";
-  dueDate: Date;
+  priority: "High" | "Medium" | "Low";
+  dueDate: string | Date;
   id: number;
 }
 
@@ -24,7 +26,8 @@ function App() {
         title: "New Goal",
         description: "Description of the new goal",
         status: "todo",
-        dueDate: new Date(),
+        dueDate: (new Date()).toLocaleString(),
+        priority: "Medium",
         id: Math.floor(Math.random() * 1000) // Simple ID generation}
       }
       return [...prevTodos, newTodo]
@@ -39,12 +42,11 @@ function App() {
       </Header>
       <section className="container">
         <InputGoal />
-      {/* <Goal>
-
-      </Goal> */}
+      <AllGoals todos = {todos} />
       </section>
     </>
   )
 }
 
 export default App
+ 
