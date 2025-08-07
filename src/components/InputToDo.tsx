@@ -9,6 +9,7 @@ const InputToDo = ({onAddGoal} : InputToDoProps) => {
     const priority = useRef<HTMLSelectElement>(null);
     const dueDate = useRef<HTMLInputElement>(null);
     const status = useRef<HTMLSelectElement>(null);
+    const [error, setError] = useState<string>("");
 
     const addNewGoal = (event: FormEvent<HTMLFormElement>) =>{
         event.preventDefault();
@@ -26,6 +27,14 @@ const InputToDo = ({onAddGoal} : InputToDoProps) => {
                 id: Date.now() // Using timestamp as a unique ID
             }
             onAddGoal(newTodo);
+            event
+        }else{
+            console.error("All fields are required to add a new goal.");
+            
+            setError("All fields are required to add a new goal.");
+            setTimeout(() => {
+                setError("");
+            },3000);
         }
     }
 
@@ -34,6 +43,7 @@ const InputToDo = ({onAddGoal} : InputToDoProps) => {
 
             <h1 className="title">Add New Goal</h1>
              <p className="description">Here you can set your goals for the day, week, or month.</p>
+             <p className='btn-danger'>{error}</p>
             <Form className='container' onSubmit={addNewGoal}>
                 <Form.Group className="mb-3" controlId="title">
                     <Form.Label>Title</Form.Label>

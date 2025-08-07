@@ -1,5 +1,13 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-
+p{
+  font-size: 1rem;
+  line-height: 1.5;
+}
 
 .container {
 
@@ -12,3 +20,10 @@
 }
 
 
+.goal-card {
+padding:1rem;
+background-image: linear-gradient(150deg, #00c6ff, #1154a7,rgba(255, 255, 255, 0.874),rgb(7, 7, 84));
+margin: 2%;
+border-radius: 10px;
+  color: white;
+}
