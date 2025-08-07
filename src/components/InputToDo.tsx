@@ -68,7 +68,7 @@ const InputToDo = ({onAddGoal} : InputToDoProps) => {
                     <Form.Control type="date" ref={dueDate} placeholder="Due Date"/>
                 </Form.Group>
                 <div className="d-grid gap-2">
-                    <Button variant="primary" size="lg">
+                    <Button variant="primary" size="lg" type="submit">
                        Add Goal
                     </Button>
                 </div>
