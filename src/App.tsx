@@ -6,24 +6,33 @@ import './App.css'
 import { useEffect, useState } from 'react';
 import todo from "./assets/todo.png"
 import AllGoals from "./components/AllToDos";
-import {type Todo} from "./resources/types/propsTypes"
+import { type Todo } from "./resources/types/propsTypes"
 
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>(todoList as Todo[])
+  //const [todos, setTodos] = useState<Todo[]>(todoList as Todo[])
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    const storedTodos = localStorage.getItem('todos');
+    return storedTodos ? JSON.parse(storedTodos) : todoList as Todo[];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos])
 
   const handleDelete = ((id: number) => {
     setTodos(prevToDos => prevToDos.filter(todo => todo.id !== id))
   })
 
-  const addNewGoal = (newTodo:Todo) => {
+  const addNewGoal = (newTodo: Todo) => {
     setTodos(prevTodos => {
-      
+
       return [...prevTodos, newTodo]
     })
-    console.log("New todo added", newTodo,todos);
+    console.log("New todo added", newTodo, todos);
+    
   }
- 
+
 
   return (
     <>
@@ -37,6 +46,6 @@ function App() {
       </section>
     </>
   )
-}  
+}
 
 export default App

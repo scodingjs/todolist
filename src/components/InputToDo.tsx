@@ -27,7 +27,7 @@ const InputToDo = ({onAddGoal} : InputToDoProps) => {
                 id: Date.now() // Using timestamp as a unique ID
             }
             onAddGoal(newTodo);
-            event
+            event.currentTarget.reset(); // Reset the form fields after submission
         }else{
             console.error("All fields are required to add a new goal.");
             
