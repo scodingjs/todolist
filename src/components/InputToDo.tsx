@@ -39,10 +39,10 @@ const InputToDo = ({onAddGoal} : InputToDoProps) => {
     }
 
     return (<>
-        <section className="container">
+        <section className="container m-4 p-4 ">
 
-            <h1 className="title">Add New Goal</h1>
-             <p className="description">Here you can set your goals for the day, week, or month.</p>
+            <h1 className="title">Add to your TODO List</h1>
+             <p className="description">Here you can set your goals/todo's  for the day, week, or month.</p>
              <p className='btn-danger'>{error}</p>
             <Form className='container' onSubmit={addNewGoal}>
                 <Form.Group className="mb-3" controlId="title">

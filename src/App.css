@@ -1,10 +1,10 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-p{
+p {
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -21,9 +21,9 @@ p{
 
 
 .goal-card {
-padding:1rem;
-background-image: linear-gradient(150deg, #00c6ff, #1154a7,rgba(255, 255, 255, 0.874),rgb(7, 7, 84));
-margin: 2%;
-border-radius: 10px;
+  padding: 1rem;
+  background-image: linear-gradient(150deg, rgb(115, 118, 120), #899396);
+  margin: 2%;
+  border-radius: 10px;
   color: white;
 }

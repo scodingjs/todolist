@@ -7,6 +7,7 @@ const Goal = ({ title, description, priority, dueDate, status, id,  onDelete }: 
         //   bg='info'
         //   text= 'white'
           className="mb-2 goal-card"
+          border="warning"
           data-id={id}>
            <Card.Header>
                 {title}
