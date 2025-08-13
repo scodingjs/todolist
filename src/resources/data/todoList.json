@@ -2,9 +2,9 @@
     {
         "title":"Todo List",
         "description":"A simple REACT app",
+        "status":"todo",
         "priority":"High",
         "dueDate":"2023-10-31",
-        "status":"in-progress",
         "id":1
     }
 ]

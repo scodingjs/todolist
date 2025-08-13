@@ -1,7 +1,7 @@
 import Header from "./components/Header"
 // import Goal from "./components/Goal"
 import InputToDo from "./components/InputToDo";
-// import todoList from "./resources/data/todoList.json";
+import todoList from "./resources/data/todoList.json";
 import './App.css'
 import { useEffect, useState } from 'react';
 import todo from "./assets/todo.png"
@@ -10,11 +10,12 @@ import {type Todo} from "./resources/types/propsTypes"
 
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([])
+  const [todos, setTodos] = useState<Todo[]>(todoList as Todo[])
 
   const handleDelete = ((id: number) => {
     setTodos(prevToDos => prevToDos.filter(todo => todo.id !== id))
   })
+
   const addNewGoal = (newTodo:Todo) => {
     setTodos(prevTodos => {
       
