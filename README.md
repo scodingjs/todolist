@@ -9,6 +9,10 @@
  - TypeScript 5
  - Vite 7
  
+ ## Deployment
+ [Live app](https://mytodolistreacttypes.netlify.app/)
+
+
  ## Getting started
  
  ```bash
@@ -46,4 +50,8 @@
    main.tsx
  public/
  ```
+
+ ## Screenshot
+
+ ![Screenshot](\src\assets\Screenshot.png)
  
