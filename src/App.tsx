@@ -33,6 +33,16 @@ function App() {
     
   }
 
+  const handleUpdateGoal = (updatedGoal: Todo) => {
+    setTodos(prevTodos => {
+      return prevTodos.map(todo => {
+        if (todo.id === updatedGoal.id) {
+          return updatedGoal;
+        }
+        return todo;
+      })
+    })
+  }
 
   return (
     <>
@@ -42,7 +52,7 @@ function App() {
       </Header>
       <section className="container">
         <InputToDo onAddGoal={addNewGoal} />
-        <AllGoals todos={todos} onDeleteGoal={handleDelete} />
+        <AllGoals todos={todos} onDeleteGoal={handleDelete} onUpdateGoal={handleUpdateGoal} />
       </section>
     </>
   )

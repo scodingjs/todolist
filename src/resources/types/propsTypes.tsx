@@ -10,6 +10,7 @@ export type Todo = {
 export interface AllToDosProps {
   todos: Todo[];
   onDeleteGoal: (id: number) => void;
+  onUpdateGoal:(goal:Todo) => void;
 }
 
 export type ToDoProps = {
@@ -20,10 +21,12 @@ export type ToDoProps = {
     status: "todo" | "in-progress" | "done";
     id: number;
     onDelete: (id: number) => void;
-}
+    onUpdateGoal:(goal:Todo) => void;
+  }
+  
+  
+  export type InputToDoProps = {
 
-
-export type InputToDoProps = {
   onAddGoal:(goal:Todo) => void;
 }
 

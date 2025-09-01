@@ -1,7 +1,7 @@
-import { type ToDoProps } from "../resources/types/propsTypes";
+import { type ToDoProps, type Todo } from "../resources/types/propsTypes";
 import Card from 'react-bootstrap/Card';
 
-const Goal = ({ title, description, priority, dueDate, status, id,  onDelete }: ToDoProps) => {
+const Goal = ({ title, description, priority, dueDate, status, id,  onDelete, onUpdateGoal }: ToDoProps) => {
     return (<>
        <Card
         //   bg='info'
@@ -20,8 +20,10 @@ const Goal = ({ title, description, priority, dueDate, status, id,  onDelete }: 
             <p>{status}</p>
              </Card.Body>
             <Card.Footer>
-
-            <button className="btn btn-danger" onClick={() => onDelete(id)}>Delete</button>
+            <button className="btn btn-warning m-2"
+             onClick={() => onUpdateGoal({title,description,status,priority,dueDate,id} as Todo)}>Edit</button>
+            <button className="btn btn-danger m-2" 
+            onClick={() => onDelete(id)}>Delete</button>
             </Card.Footer>
         </Card>
     </>)

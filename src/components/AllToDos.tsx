@@ -14,14 +14,16 @@ import { Container, Row } from "react-bootstrap";
 
 
 
-const AllGoals = ({todos,onDeleteGoal}:AllToDosProps) => {
+const AllGoals = ({todos,onDeleteGoal,onUpdateGoal}:AllToDosProps) => {
    
     return( <Container className="my-4 p-4 m-5">
          <Row xs={1} sm={2} md={3} lg={4} className="g-4">
         {todos.map((goal,key) => (<ToDo
             {...goal}
             key = {key} 
-            onDelete = {onDeleteGoal}/>
+            onDelete = {onDeleteGoal}
+            onUpdateGoal={onUpdateGoal}
+            />
         ))}
         </Row>
         </Container>)
