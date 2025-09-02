@@ -8,12 +8,11 @@ const Goal = ({ title, description, priority, dueDate, status, id, onDelete, onU
     const[updateGoal,setUpdateGoal]=useState<Todo>({
         title,description,priority,dueDate,status,id
     })
-    const handleInputChange = (event: React.ChangeEvent<React.FormControlElement>) => {
-        const { name, value } = event.target as HTMLInputElement | HTMLSelectElement;
-       // console.log(name, value);
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = event.target;
         setUpdateGoal(prevGoal => ({...prevGoal,[name]:value}))
-        // console.log(updateGoal)
     }
+
     return (<>
         <Card
             bg={status === "todo" ? "info" : 
