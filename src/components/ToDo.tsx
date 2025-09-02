@@ -8,7 +8,7 @@ const Goal = ({ title, description, priority, dueDate, status, id, onDelete, onU
     const[updateGoal,setUpdateGoal]=useState<Todo>({
         title,description,priority,dueDate,status,id
     })
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement| HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = event.target;
         setUpdateGoal(prevGoal => ({...prevGoal,[name]:value}))
     }
