@@ -18,7 +18,7 @@ const Goal = ({ title, description, priority, dueDate, status, id, onDelete, onU
         <Card
             bg={status === "todo" ? "info" : status === "in-progress" ? "warning" : "success"}
             className="mb-2 goal-card"
-            border="warning"
+         
             data-id={id}>
             <Card.Header>
                 <h6>{priority}</h6>
@@ -59,7 +59,7 @@ const Goal = ({ title, description, priority, dueDate, status, id, onDelete, onU
                     <Form.Group className="mb-3" controlId="priority">
                         <Form.Label>Priority</Form.Label>
                         <Form.Select aria-label="Default select" value={updateGoal.priority}
-                            name="priority" onChange={handleInputChange} defaultValue="2">
+                            name="priority" onChange={handleInputChange} >
                             <option>Open this select menu</option>
                             <option value="High">High</option>
                             <option value="Medium">Medium</option>
@@ -90,7 +90,7 @@ const Goal = ({ title, description, priority, dueDate, status, id, onDelete, onU
                     </Form.Group>
                     <div className="d-grid gap-2">
                         <Button variant="primary" size="lg" type="submit"
-                            onClick={() => onUpdateGoal({ title, description, status, priority, dueDate, id } as Todo)}>
+                            onClick={() => onUpdateGoal({...updateGoal } as Todo)}>
                             Update Task
                         </Button>
                     </div>
