@@ -1,7 +1,8 @@
 // import todoList from "../resources/data/todoList.json";
 import ToDo from "./ToDo";
 import {type AllToDosProps} from "../resources/types/propsTypes";
-import { Container, Row } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row"
 
 // const AllGoals = () => {
 //     return(<div className="all-goals">

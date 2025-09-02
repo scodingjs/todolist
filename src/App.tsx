@@ -1,12 +1,13 @@
-import Header from "./components/Header"
+import {lazy,Suspense} from 'react';
+import Header from "./components/Header";
 // import Goal from "./components/Goal"
 import InputToDo from "./components/InputToDo";
 import todoList from "./resources/data/todoList.json";
 import './App.css'
 import { useEffect, useState } from 'react';
 import todo from "./assets/todo.png"
-import AllGoals from "./components/AllToDos";
 import { type Todo } from "./resources/types/propsTypes"
+const AllGoals = lazy(() =>   import("./components/AllToDos"));
 
 
 function App() {
@@ -53,7 +54,9 @@ function App() {
       </Header>
       <section className="container">
         <InputToDo onAddGoal={addNewGoal} />
+        <Suspense fallback={<div>Loading...</div>}>
         <AllGoals todos={todos} onDeleteGoal={handleDelete} onUpdateGoal={handleUpdateGoal} />
+        </Suspense>
       </section>
     </>
   )
