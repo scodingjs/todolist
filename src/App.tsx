@@ -34,6 +34,7 @@ function App() {
   }
 
   const handleUpdateGoal = (updatedGoal: Todo) => {
+    console.log("Updating goal", updatedGoal);
     setTodos(prevTodos => {
       return prevTodos.map(todo => {
         if (todo.id === updatedGoal.id) {
