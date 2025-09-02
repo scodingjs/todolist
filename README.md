@@ -53,5 +53,7 @@
 
  ## Screenshot
 
- ![Screenshot](\src\assets\Screenshot.png)
+ ![Screenshot](https://github.com/scodingjs/todolist/blob/main/src/assets/Screenshot.png)
  
+
+ ![Screenshot](https://github.com/scodingjs/todolist/blob/main/src/assets/lighthouse.png)
