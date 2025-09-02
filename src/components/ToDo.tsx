@@ -16,7 +16,8 @@ const Goal = ({ title, description, priority, dueDate, status, id, onDelete, onU
     }
     return (<>
         <Card
-            bg={status === "todo" ? "info" : status === "in-progress" ? "warning" : "success"}
+            bg={status === "todo" ? "info" : 
+                status === "in-progress" ? "warning" : "success"}
             className="mb-2 goal-card"
          
             data-id={id}>
@@ -96,15 +97,6 @@ const Goal = ({ title, description, priority, dueDate, status, id, onDelete, onU
                     </div>
                 </Form>
             </Modal.Body>
-
-            {/* <Modal.Footer>
-                <Button variant="secondary" onClick={() => setIsEditing(prevEditing => !prevEditing)}>
-                    Close
-                </Button>
-                <Button variant="primary" >
-                    Save changes
-                </Button>
-            </Modal.Footer> */}
         </Modal>
     </>
     )
