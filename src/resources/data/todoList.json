@@ -1,10 +1,10 @@
 [
     {
-        "title":"Todo List",
-        "description":"A simple REACT app",
-        "status":"todo",
+        "title":"Finish Cypress",
+        "description":"Complete Cypress : TypeScript for this project",
+        "status":"in-progress",
         "priority":"High",
-        "dueDate":"2023-10-31",
-        "id":1
+        "dueDate":"2025-10-31",
+        "id":101
     }
 ]

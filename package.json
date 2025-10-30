@@ -7,7 +7,17 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:e2e:run": "cypress run",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:e2e": "cypress run --spec 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}'",
+    "cypress:component": "cypress run --component",
+    "test:run":"concurrently \"npm run build && npm run dev\" \"npm run cypress:open\"",
+    "test:component": "cypress run --component",
+    "test": "npx cypress run --browser electron",
+    "test-component": "npx cypress run --component",
+    "test-gui": "npx cypress open"
   },
   "dependencies": {
     "bootstrap": "^5.3.7",
@@ -20,6 +30,7 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
+    "cypress": "^15.5.0",
     "eslint": "^9.30.1",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",

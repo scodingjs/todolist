@@ -4,16 +4,6 @@ import {type AllToDosProps} from "../resources/types/propsTypes";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row"
 
-// const AllGoals = () => {
-//     return(<div className="all-goals">
-//         {todoList.map((goal,key) => (<Goal
-//             {...goal}id={key} />
-//         ))}
-//         </div>)
-// }
-
-
-
 
 const AllGoals = ({todos,onDeleteGoal,onUpdateGoal}:AllToDosProps) => {
    

@@ -53,7 +53,7 @@ function App() {
         <h1>ToDo List</h1>
       </Header>
       <section className="container">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<section>Loading To Do's</section>}>
         <InputToDo onAddGoal={addNewGoal} />
         <AllGoals todos={todos} onDeleteGoal={handleDelete} onUpdateGoal={handleUpdateGoal} />
         </Suspense>

@@ -21,14 +21,13 @@ const Goal = ({ title, description, priority, dueDate, status, id, onDelete, onU
          
             data-id={id}>
             <Card.Header>
-                <h6>{priority}</h6>
+                <h3>{priority}</h3>
                 <p>{status.toLocaleUpperCase()}</p>
 
             </Card.Header>
             <Card.Body>
                 <h4>{title}</h4>
                 <p>{description}</p>
-
                 <p>{(dueDate instanceof Date) ? dueDate.toLocaleDateString() : dueDate}</p>
                 <p>{priority}</p>
                 <p>{status}</p>
