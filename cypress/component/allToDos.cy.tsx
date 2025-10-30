@@ -3,6 +3,7 @@ import { mount } from 'cypress/react';
 import { type Todo} from "../../src/resources/types/propsTypes.tsx"
 
 describe("Check rendering of all todo's list component", () => {
+    it('Render the default todo list', () => {
     const mockToDos:Todo[]= [
         {
             id:1,
@@ -24,7 +25,6 @@ describe("Check rendering of all todo's list component", () => {
     const onDeleteGoal = cy.stub().as("onDeleteGoal")
     const onUpdateGoal = cy.stub().as("onUpdateGoal")
     
-    it('Render the default todo list', () => {
         mount(<AllToDos
             todos = {mockToDos}
             onDeleteGoal={onDeleteGoal}
@@ -32,13 +32,13 @@ describe("Check rendering of all todo's list component", () => {
         
         cy.get(`[data-id="1"]`).should('exist').and('be.visible')
          cy.get(`[data-id="2"]`).should('exist').and('be.visible')
-        cy.get('h3').should('have.text', 'High')
-        cy.get('p').should('have.text', 'in-progress')
+        cy.get('h3').last().should('have.text', 'High')
+        cy.get('p').last().should('have.text', 'in-progress')
         // Get the card footer
         cy.get('.card-footer').should('exist').and('be.visible')
 
         // Check it has exactly 2 buttons
-        cy.get('.card-footer button').should('have.length', 2)
+        cy.get('.card-footer').first().get('button').should('have.length', 4)
 
         // Check the text of each button
         cy.get('.card-footer button').first().should('have.text', 'Edit')
