@@ -55,7 +55,7 @@ const InputToDo = ({ onAddGoal }: InputToDoProps) => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="priority">
                     <Form.Label>Priority</Form.Label>
-                    <Form.Select aria-label="Default select" ref={priority} defaultValue="2">
+                    <Form.Select aria-label="select priority" ref={priority} defaultValue="2">
                         <option>Open this select menu</option>
                         <option value="High">High</option>
                         <option value="Medium">Medium</option>
@@ -65,7 +65,7 @@ const InputToDo = ({ onAddGoal }: InputToDoProps) => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="status">
                     <Form.Label>Status</Form.Label>
-                    <Form.Select aria-label="Default select" ref={status} defaultValue="1">
+                    <Form.Select aria-label="select status" ref={status} defaultValue="1">
                         <option>Open this select menu</option>
                         <option value="todo">ToDo</option>
                         <option value="in-progress">In Progress</option>
