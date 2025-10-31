@@ -8,7 +8,7 @@ describe("Testing the InputToDo Component", () => {
 
     beforeEach(() => {
         onAddGoalStub = cy.stub();
-        mount(React.createElement(InputToDo, { onAddGoal: onAddGoalStub }));
+         mount(React.createElement(InputToDo, { onAddGoal: onAddGoalStub }));
     });
 
     it("Renders the Form element with input fields", () => {
