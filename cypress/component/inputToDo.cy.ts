@@ -48,5 +48,21 @@ describe("Testing the InputToDo Component", () => {
         cy.wrap(onAddGoalStub).should('not.be.called');
     })
 
-    
+    it("Check all selections of priority option", () => {
+        cy.get('select[aria-label="select priority"]').select('High');
+        cy.get('select[aria-label="select priority"]').should('have.value', 'High');
+        cy.get('select[aria-label="select priority"]').select('Medium');
+        cy.get('select[aria-label="select priority"]').should('have.value', 'Medium');
+        cy.get('select[aria-label="select priority"]').select('Low');
+        cy.get('select[aria-label="select priority"]').should('have.value', 'Low');
+    })
+
+    it('Check all options of status', () => {
+        cy.get('select[aria-label="select status"]').select('todo');
+        cy.get('select[aria-label="select status"]').should('have.value', 'todo');
+        cy.get('select[aria-label="select status"]').select('in-progress');
+        cy.get('select[aria-label="select status"]').should('have.value', 'in-progress');
+        cy.get('select[aria-label="select status"]').select('done');
+        cy.get('select[aria-label="select status"]').should('have.value', 'done');
+    })
 })
