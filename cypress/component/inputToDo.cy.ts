@@ -1,14 +1,14 @@
 import React from "react";
 import InputToDo from "../../src/components/InputToDo";
 import { type Todo } from "../../src/resources/types/propsTypes.tsx";
-
+import {mount} from "cypress/react"
 
 describe("Testing the InputToDo Component", () => {
     let onAddGoalStub: Cypress.Stub;
 
     beforeEach(() => {
         onAddGoalStub = cy.stub();
-        cy.mount(React.createElement(InputToDo, { onAddGoal: onAddGoalStub }));
+        mount(React.createElement(InputToDo, { onAddGoal: onAddGoalStub }));
     });
 
     it("Renders the Form element with input fields", () => {
@@ -30,7 +30,7 @@ describe("Testing the InputToDo Component", () => {
         cy.get('select[aria-label="select status"]').select('todo');
         cy.get('button').click()
         cy.wrap(onAddGoalStub).should('be.calledOnce');
-        cy.wrap(onAddGoalStub).then((stub: any) => {
+        cy.wrap(onAddGoalStub).then((stub: Cypress.Stub) => {
             const call = stub.getCall(0);
             const todo: Todo = call.args[0];
             expect(todo.title).to.equal('Test the todo app input');
