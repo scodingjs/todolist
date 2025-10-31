@@ -43,5 +43,7 @@ jobs:
 
       # Run tests
       - name: Run Tests
-        run: npm run test
-        
+        run: |
+          npm run dev &
+          npx wait-on http://localhost:5173 --timeout 60000
+          npm run test
