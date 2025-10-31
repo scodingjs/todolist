@@ -5,7 +5,7 @@ import { mount } from 'cypress/react';
 // add TypeScript declaration for custom 'mount' command
 declare global {
   namespace Cypress {
-    interface Chainable<Subject = any> {
+    interface Chainable{
       mount: typeof mount;
     }
   }

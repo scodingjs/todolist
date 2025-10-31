@@ -4,7 +4,7 @@ import { type Todo } from "../../src/resources/types/propsTypes.tsx";
 
 
 describe("Testing the InputToDo Component", () => {
-    let onAddGoalStub: any;
+    let onAddGoalStub: Cypress.Stub;
 
     beforeEach(() => {
         onAddGoalStub = cy.stub();
