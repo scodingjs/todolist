@@ -7,9 +7,9 @@ import Row from "react-bootstrap/Row"
 
 const AllGoals = ({todos,onDeleteGoal,onUpdateGoal}:AllToDosProps) => {
    
-    return( <Container className="my-4 p-4 m-5" data-testId="todos-container">
-        {todos.length === 0 ? <h4 data-testId ="empty-todos">No Todo's yet. Add your first goal!</h4>:
-         <Row data-testId="todos-list" xs={1} sm={2} md={3} lg={4} className="g-4">
+    return( <Container className="my-4 p-4 m-5" data-testid="todos-container">
+        {todos.length === 0 ? <h4 data-testid ="empty-todos">No Todo's yet. Add your first goal!</h4>:
+         <Row data-testid="todos-list" xs={1} sm={2} md={3} lg={4} className="g-4">
         {todos.map((goal,key) => (<ToDo
             {...goal}
             key = {key} 
