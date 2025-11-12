@@ -15,11 +15,11 @@ type HeaderProps ={
 }
 const Header = ({image,children}:HeaderProps) => {
     return (<>
-        <Navbar  bg="primary" data-bs-theme="dark">
+        <Navbar data-testId="navbar"  bg="primary" data-bs-theme="dark">
             <Container>
-                <Navbar.Brand href="/">{children}</Navbar.Brand>
+                <Navbar.Brand data-testId="navbar-brand" href="/">{children}</Navbar.Brand>
                    {/* <Image src ={image.src} alt={image.alt} className="header-image" /> */}
-                <Image {...image} className="header-image" />
+                <Image {...image} data-testId="app-logo" className="header-image" alt="app logo" />
             </Container>
         </Navbar>
     </>);

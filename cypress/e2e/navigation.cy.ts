@@ -3,10 +3,14 @@ describe('Page Navigation and Layout', () => {
     cy.visit('/');
   });
 
+  // it('should load the homepage successfully', () => {
+  //   cy.url().should('include', 'localhost:5173');
+  // });
   it('should load the homepage successfully', () => {
-    cy.url().should('include', 'localhost:5173');
+    cy.location('pathname').should('eq', '/');
+    // Or verify status code
+    cy.request('/').its('status').should('eq', 200);
   });
-
   it('should display navbar and icon', () => {
     cy.get('nav').should('be.visible');
     cy.get('.navbar-brand').should('be.visible');
