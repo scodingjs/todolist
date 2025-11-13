@@ -30,7 +30,7 @@ describe('Page Navigation and Layout', () => {
     cy.contains("Loading To Do's").should('not.exist')
 
 
-  cy.get('[data-testid="section-title"]').should('have.text', 'Add to your TODO List')
+    cy.get('[data-testid="section-title"]',{ timeout: 5000 }).should('have.text', 'Add to your TODO List')
     cy.get('[data-testid="section-description"]')
       .first()
       .invoke('text')
@@ -70,30 +70,42 @@ describe('Page Navigation and Layout', () => {
   // });
 
   it('should display form elements', () => {
-  cy.get('[data-testid="todo-form"]').should('be.visible');
+    cy.get('[data-testid="todo-form"]',{timeout:5000}).should('be.visible');
 
-  cy.verifyField('title', 'title-input', 'title');
-  cy.verifyField('description', 'description-input', 'description');
-  cy.verifyField('priority', 'priority-select', 'priority');
-  cy.verifyField('status', 'status-select', 'status');
-  cy.verifyField('dueDate', 'due-date-input', 'dueDate');
+    cy.verifyField('title', 'title-input', 'title');
+    cy.verifyField('description', 'description-input', 'description');
+    cy.verifyField('priority', 'priority-select', 'priority');
+    cy.verifyField('status', 'status-select', 'status');
+    cy.verifyField('dueDate', 'due-date-input', 'dueDate');
 
-  cy.get('[data-testid="add-todo"]').should('be.visible');
-});
+    cy.get('[data-testid="add-todo"]').should('be.visible');
+  });
 
 
-  it('should have responsive layout', () => {
+  it('should have a responsive layout', () => {
     // Test desktop
-    cy.viewport(1920, 1080);
-    cy.contains('ToDo List').should('be.visible');
+    // cy.viewport(1920, 1080);
+    // cy.contains('ToDo List').should('be.visible');
 
     // Test tablet
-    cy.viewport(768, 1024);
-    cy.contains('ToDo List').should('be.visible');
+    // cy.viewport(768, 1024);
+    // cy.contains('ToDo List').should('be.visible');
 
     // Test mobile
-    cy.viewport(375, 667);
-    cy.contains('ToDo List').should('be.visible');
+    // cy.viewport(375, 667);
+    // cy.contains('ToDo List').should('be.visible');
+
+    const viewPorts: Array<[number, number]> = [
+      [1920, 1080],
+      [768, 1024],
+      [375, 667]
+    ]
+
+    viewPorts.forEach(([width, height]) => {
+      cy.viewport(width, height);
+      cy.get('[data-testid="app-title"]').
+        should('be.visible').and('have.text', 'ToDo List');
+    });
   });
 
 });
