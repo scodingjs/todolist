@@ -29,11 +29,12 @@ describe("Check rendering of all todo's list component", () => {
             todos = {mockToDos}
             onDeleteGoal={onDeleteGoal}
             onUpdateGoal={onUpdateGoal} />)
-        
+             cy.getTestById('todos-container').should('be.visible');
+           cy.getTestById('todos-list').should('be.visible');
         cy.get(`[data-id="1"]`).should('exist').and('be.visible')
          cy.get(`[data-id="2"]`).should('exist').and('be.visible')
-        cy.get('h3').last().should('have.text', 'High')
-        cy.get('p').last().should('have.text', 'in-progress')
+        cy.getTestById('todo-priority').last().should('have.text', 'High')
+        cy.getTestById('todo-status').last().should('have.text', 'in-progress')
         // Get the card footer
         cy.get('.card-footer').should('exist').and('be.visible')
 

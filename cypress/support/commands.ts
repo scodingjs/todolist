@@ -8,7 +8,7 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 
-
+// import {type Todo} from "../../src/resources/types/propsTypes";
 // Extend Cypress' Chainable interface for TypeScript autocomplete
 declare global {
   namespace Cypress {
@@ -21,17 +21,34 @@ declare global {
        * @param idAttr - the expected id value for the field
        */
       verifyField(labelFor: string, testId: string, idAttr: string): Chainable<void>;
+      getTestById(testId: string): Chainable<JQuery<HTMLElement>>;
+      clearAllTodos(): Chainable<void>;
     }
   }
 }
 
-// Implementation
+// Implementation of VerifyField
 Cypress.Commands.add('verifyField', (labelFor, testId, idAttr) => {
   cy.get(`label[for="${labelFor}"]`).should('exist');
   cy.get(`[data-testid="${testId}"]`)
     .should('be.visible')
     .and('have.attr', 'id', idAttr);
 });
+
+//Implementation of getTestById for component testing
+
+Cypress.Commands.add('getTestById', (testId: string) => {
+  return cy.get(`[data-testid="${testId}"]`)
+})
+
+// Custom command to delete all todos (for test cleanup)
+Cypress.Commands.add('clearAllTodos', () => {
+  cy.window().then((win) => {
+    win.localStorage.removeItem('todos');
+  });
+  cy.reload();
+});
+
 
 export {}; // ensures this file is treated as a module
 
