@@ -3,9 +3,7 @@ describe('Page Navigation and Layout', () => {
     cy.visit('/');
   });
 
-  // it('should load the homepage successfully', () => {
-  //   cy.url().should('include', 'localhost:5173');
-  // });
+
   it('should load the homepage successfully', () => {
     cy.location('pathname').should('eq', '/');
     // Or verify status code
@@ -40,6 +38,41 @@ describe('Page Navigation and Layout', () => {
       });
   });
 
+  it('should display form elements', () => {
+    cy.get('[data-testid="todo-form"]',{timeout:5000}).should('be.visible');
+
+    cy.verifyField('title', 'title-input', 'title');
+    cy.verifyField('description', 'description-input', 'description');
+    cy.verifyField('priority', 'priority-select', 'priority');
+    cy.verifyField('status', 'status-select', 'status');
+    cy.verifyField('dueDate', 'due-date-input', 'dueDate');
+
+    cy.get('[data-testid="add-todo"]').should('be.visible');
+  });
+
+
+  it('should have a responsive layout', () => {
+    const viewPorts: Array<[number, number]> = [
+      [1920, 1080], //desktop
+      [768, 1024], //tablet
+      [375, 667] //mobile
+    ]
+
+    viewPorts.forEach(([width, height]) => {
+      cy.viewport(width, height);
+      cy.get('[data-testid="app-title"]').
+        should('be.visible').and('have.text', 'ToDo List');
+    });
+  });
+
+});
+
+
+  // it('should load the homepage successfully', () => {
+  //   cy.url().should('include', 'localhost:5173');
+  // });
+
+
   // it('should display form element', () => {
   //   cy.get('[data-testid="todo-form"]').should('be.visible');
   //   cy.get('label').first().should('have.attr', "for", "title");
@@ -68,44 +101,3 @@ describe('Page Navigation and Layout', () => {
   //   cy.get('[data-testid=\"due-date-input\"]').should('be.visible').and('have.attr', "id", "dueDate");
   //   cy.get('[data-testid=\"add-todo\"]').should('be.visible');
   // });
-
-  it('should display form elements', () => {
-    cy.get('[data-testid="todo-form"]',{timeout:5000}).should('be.visible');
-
-    cy.verifyField('title', 'title-input', 'title');
-    cy.verifyField('description', 'description-input', 'description');
-    cy.verifyField('priority', 'priority-select', 'priority');
-    cy.verifyField('status', 'status-select', 'status');
-    cy.verifyField('dueDate', 'due-date-input', 'dueDate');
-
-    cy.get('[data-testid="add-todo"]').should('be.visible');
-  });
-
-
-  it('should have a responsive layout', () => {
-    // Test desktop
-    // cy.viewport(1920, 1080);
-    // cy.contains('ToDo List').should('be.visible');
-
-    // Test tablet
-    // cy.viewport(768, 1024);
-    // cy.contains('ToDo List').should('be.visible');
-
-    // Test mobile
-    // cy.viewport(375, 667);
-    // cy.contains('ToDo List').should('be.visible');
-
-    const viewPorts: Array<[number, number]> = [
-      [1920, 1080],
-      [768, 1024],
-      [375, 667]
-    ]
-
-    viewPorts.forEach(([width, height]) => {
-      cy.viewport(width, height);
-      cy.get('[data-testid="app-title"]').
-        should('be.visible').and('have.text', 'ToDo List');
-    });
-  });
-
-});

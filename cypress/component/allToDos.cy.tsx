@@ -34,7 +34,7 @@ describe("Check rendering of all todo's list component", () => {
         cy.get(`[data-id="1"]`).should('exist').and('be.visible')
          cy.get(`[data-id="2"]`).should('exist').and('be.visible')
         cy.getTestById('todo-priority').last().should('have.text', 'High')
-        cy.getTestById('todo-status').last().should('have.text', 'in-progress')
+        cy.getTestById('todo-status').last().should('have.text', 'in-progress'.toUpperCase())
         // Get the card footer
         cy.get('.card-footer').should('exist').and('be.visible')
 
