@@ -40,7 +40,7 @@ const Goal = ({ title, description, priority, dueDate, status, id, onDelete, onU
 
         <Modal show={isEditing} onHide={() => setIsEditing(prevEditing => !prevEditing)} data-testid="model-display">
             <Modal.Header closeButton>
-                <Modal.Title data-testid="edit-title">Edit Task</Modal.Title>
+                <Modal.Title>Edit Task</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
