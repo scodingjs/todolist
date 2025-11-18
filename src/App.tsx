@@ -50,7 +50,7 @@ function App() {
     <>
       <Header
         image={{ src: todo, alt: "App Icon", width: "50", height: "50" }}>
-        <h1>ToDo List</h1>
+        <h1 data-testid="app-title">ToDo List</h1>
       </Header>
       <section className="container">
         <Suspense fallback={<section>Loading To Do's</section>}>

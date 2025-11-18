@@ -1,7 +1,5 @@
-# Name of workflow
 name: Lint and Test workflow
 
-# Trigger workflow on all pull requests
 on:
   pull_request:
     branches:
@@ -12,39 +10,40 @@ on:
     branches:
      - main
      - master
-     
-# Jobs to carry out
+
 jobs:
   test:
-    # Operating system to run job on
     runs-on: ubuntu-latest
 
-    # Steps in job
     steps:
-      # Get code from repo
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
 
       - name: Use Node.js 21.x
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: 21.x
 
       # Install dependencies
       - name: 🧰 Install Deps
-        run: npm install
-        
-      # Run lint
+        run: npm ci
+
       - name: Run Lint
         run: npm run lint
 
-      # Run build
       - name: Run Build
         run: npm run build
 
-      # Run tests
-      - name: Run Tests
+      # 👉 COMPONENT TESTS
+      - name: 🧪 Run Cypress Component Tests
+        run: npx cypress run --component
+
+      # 👉 START DEV SERVER FOR E2E TESTS
+      - name: Start Dev Server
         run: |
           npm run dev &
           npx wait-on http://localhost:5173 --timeout 60000
-          npm run test
+
+      # 👉 E2E TESTS
+      - name: 🧪 Run Cypress E2E Tests
+        run: npx cypress run --spec "cypress/e2e/smoke/*.cy.ts"

@@ -39,23 +39,24 @@ const InputToDo = ({ onAddGoal }: InputToDoProps) => {
     }
 
     return (<>
-        <section className="container m-4 p-4 ">
+        <section data-testid="todo-section"  className="container m-4 p-4 ">
 
-            <h2 className="title">Add to your TODO List</h2>
-            <p className="description">Here you can set your goals/todo's  for the day, week, or month.</p>
-            <p className='btn-danger'>{error}</p>
-            <Form className='container' onSubmit={addNewGoal}>
+            <h2 className="title" data-testid="section-title">Add to your TODO List</h2>
+            <p className="description" data-testid="section-description">Here you can set your goals/todo's  for the day, week, or month.</p>
+           {error && <p data-testid="input-error" className='btn-danger'>{error}</p>}
+
+            <Form className='container' data-testid="todo-form" onSubmit={addNewGoal}>
                 <Form.Group className="mb-3" controlId="title">
                     <Form.Label>Title</Form.Label>
-                    <Form.Control type="text" placeholder="Title" ref={title} />
+                    <Form.Control type="text" placeholder="Title" ref={title} data-testid="title-input"/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="description">
                     <Form.Label>Description</Form.Label>
-                    <Form.Control type="text" placeholder="Description" ref={description} />
+                    <Form.Control type="text" placeholder="Description" ref={description} data-testid="description-input"/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="priority">
                     <Form.Label>Priority</Form.Label>
-                    <Form.Select aria-label="select priority" ref={priority} defaultValue="2">
+                    <Form.Select aria-label="select priority" ref={priority} defaultValue="2" data-testid="priority-select">
                         <option>Open this select menu</option>
                         <option value="High">High</option>
                         <option value="Medium">Medium</option>
@@ -65,7 +66,7 @@ const InputToDo = ({ onAddGoal }: InputToDoProps) => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="status">
                     <Form.Label>Status</Form.Label>
-                    <Form.Select aria-label="select status" ref={status} defaultValue="1">
+                    <Form.Select aria-label="select status" ref={status} defaultValue="1" data-testid="status-select">
                         <option>Open this select menu</option>
                         <option value="todo">ToDo</option>
                         <option value="in-progress">In Progress</option>
@@ -75,10 +76,10 @@ const InputToDo = ({ onAddGoal }: InputToDoProps) => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="dueDate">
                     <Form.Label>Due Date</Form.Label>
-                    <Form.Control type="date" ref={dueDate} placeholder="Due Date" />
+                    <Form.Control type="date" ref={dueDate} placeholder="Due Date" data-testid="due-date-input" />
                 </Form.Group>
                 <div className="d-grid gap-2">
-                    <Button variant="primary" size="lg" type="submit">
+                    <Button variant="primary" size="lg" type="submit" data-testid="add-todo">
                         Add Goal
                     </Button>
                 </div>

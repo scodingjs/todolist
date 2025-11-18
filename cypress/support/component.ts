@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 // cypress/support/component.ts
-import './commands';   // import custom Cypress commands
+import './commands.ts';   // import custom Cypress commands
 import { mount } from 'cypress/react';
 
 // add TypeScript declaration for custom 'mount' command

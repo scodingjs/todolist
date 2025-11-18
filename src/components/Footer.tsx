@@ -1,7 +1,7 @@
 const  Footer = () => {
     return(<>
-        <footer className="footer">
-            <p className="text-center">© 2025 My ToDo App</p>
+        <footer className="footer" data-testid="footer">
+            <p data-testid="footer-text" className="text-center">© {new Date().getFullYear()} My ToDo App</p>
         </footer>
         </>)
 }

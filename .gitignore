@@ -32,3 +32,4 @@ cypress/e2e/2-advanced-examples
 
 cypress/component/saminputTodo.cy.tsx
 cypress/component/ref.cy.tsx
+cypress/screenshots/

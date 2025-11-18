@@ -7,6 +7,63 @@
 // For more comprehensive examples of custom
 // commands please read more here:
 // https://on.cypress.io/custom-commands
+
+import { type Todo } from "../../src/resources/types/propsTypes";
+// Extend Cypress' Chainable interface for TypeScript autocomplete
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      /**
+       * Verifies that a form field has a label, is visible,
+       * and has the expected id attribute.
+       * @param labelFor - the "for" attribute of the <label>
+       * @param testId - the data-testid value for the input/select
+       * @param idAttr - the expected id value for the field
+       */
+      verifyField(labelFor: string, testId: string, idAttr: string): Chainable<void>;
+      getTestById(testId: string): Chainable<JQuery<HTMLElement>>;
+      clearAllTodos(): Chainable<void>;
+      addTodo(todo: Todo): Chainable<void>
+    }
+  }
+}
+
+// Implementation of VerifyField
+Cypress.Commands.add('verifyField', (labelFor, testId, idAttr) => {
+  cy.get(`label[for="${labelFor}"]`).should('exist');
+  cy.get(`[data-testid="${testId}"]`)
+    .should('be.visible')
+    .and('have.attr', 'id', idAttr);
+});
+
+//Implementation of getTestById for component testing
+
+Cypress.Commands.add('getTestById', (testId: string) => {
+  return cy.get(`[data-testid="${testId}"]`).should("exist")
+})
+
+// Custom command to delete all todos (for test cleanup)
+Cypress.Commands.add('clearAllTodos', () => {
+  cy.window().then((win) => {
+    win.localStorage.removeItem('todos');
+  });
+  cy.reload();
+});
+
+// Custom command to perform TODO add operation
+
+Cypress.Commands.add('addTodo', (todo: Todo) => {
+  cy.getTestById('title-input').type(todo.title);
+  cy.getTestById('description-input').type(todo.description);
+  const dueDateStr = todo.dueDate instanceof Date ? todo.dueDate.toISOString().slice(0, 10) : todo.dueDate;
+  cy.getTestById('due-date-input').type(dueDateStr);
+  cy.getTestById('priority-select').select(todo.priority);
+  cy.getTestById('status-select').select(todo.status);
+  cy.getTestById('add-todo').click()
+})
+
+export { }; // ensures this file is treated as a module
+
 // ***********************************************
 //
 //
