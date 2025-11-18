@@ -6,6 +6,7 @@
     { "path": "./cypress/tsconfig.json" }
   ],
    "exclude": [
+    "node_modules",
     "cypress",
     "**/*.cy.ts",
     "**/*.cy.tsx"
