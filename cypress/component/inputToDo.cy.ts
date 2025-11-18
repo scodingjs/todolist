@@ -4,8 +4,8 @@ import { type Todo } from "../../src/resources/types/propsTypes.tsx";
 import {mount} from "cypress/react"
 
 describe("Testing the InputToDo Component", () => {
-    let onAddGoalStub: Cypress.Stub;
-
+  //  let onAddGoalStub: Cypress.Stub;
+ let onAddGoalStub : ReturnType<typeof cy.stub>;
     beforeEach(() => {
         onAddGoalStub = cy.stub();
          mount(React.createElement(InputToDo, { onAddGoal: onAddGoalStub }));
@@ -30,7 +30,7 @@ describe("Testing the InputToDo Component", () => {
         cy.getTestById('status-select').select('todo');
         cy.getTestById ('add-todo').click()
         cy.wrap(onAddGoalStub).should('be.calledOnce');
-        cy.wrap(onAddGoalStub).then((stub: Cypress.Stub) => {
+        cy.wrap(onAddGoalStub).then((stub: ReturnType<typeof cy.stub>) => {
             const call = stub.getCall(0);
             const todo: Todo = call.args[0];
             expect(todo.title).to.equal('Test the todo app input');

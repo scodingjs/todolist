@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { type Todo } from "../../src/resources/types/propsTypes.tsx";
 
 describe('TODO app CRUD Operation test suite', () => {
