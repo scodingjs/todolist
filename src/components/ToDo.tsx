@@ -13,6 +13,11 @@ const Goal = ({ title, description, priority, dueDate, status, id, onDelete, onU
         setUpdateGoal(prevGoal => ({...prevGoal,[name]:value}))
     }
 
+    const handleFormEditSubmit = (event:React.ChangeEvent<HTMLFormElement>) => {
+        event.preventDefault()
+      onUpdateGoal(updateGoal)
+      setIsEditing(false)
+    }
     return (<>
         <Card
             bg={status === "todo" ? "info" : 
@@ -44,7 +49,7 @@ const Goal = ({ title, description, priority, dueDate, status, id, onDelete, onU
             </Modal.Header>
 
             <Modal.Body>
-                <Form data-testid="edit-form" className='container' onSubmit={() => onUpdateGoal({ title, description, status, priority, dueDate, id } as Todo)}>
+                <Form data-testid="edit-form" className='container' onSubmit={handleFormEditSubmit}>
                     <Form.Group className="mb-3" controlId="title">
                         <Form.Label>Title</Form.Label>
                         <Form.Control type="text" placeholder="Title" value={updateGoal.title} name="title" data-testid="edit-title" onChange={handleInputChange} />
@@ -87,7 +92,7 @@ const Goal = ({ title, description, priority, dueDate, status, id, onDelete, onU
                     </Form.Group>
                     <div className="d-grid gap-2">
                         <Button variant="primary" size="lg" type="submit" data-testid="submit-edit"
-                            onClick={() => onUpdateGoal({...updateGoal } as Todo)}>
+                            >
                             Update Task
                         </Button>
                     </div>

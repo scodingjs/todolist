@@ -54,6 +54,19 @@ describe('TODO app CRUD Operation test suite', () => {
         //     cy.getTestById("todo-status").should('contain.text', "done");
         //     cy.getTestById("todo-priority").should('contain.text', "Medium");
         // })
+        cy.contains('[data-testid="todo-title"]', 'Linkedin course completed')
+  .should('exist')
+  .parents('[data-testid="todo-item"]')
+  .within(() => {
+      cy.getTestById('todo-description')
+        .should('contain.text', 'Certification exam completed');
+
+      cy.getTestById("todo-status")
+        .should('contain.text', "DONE");
+
+      cy.getTestById("todo-priority")
+        .should('contain.text', "Medium");
+  });
         //Delete
         cy.getTestById("todo-delete").eq(1).click()
         cy.get(`[data-testid="todo-item"]`).eq(1).should("not.exist")
