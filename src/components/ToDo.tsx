@@ -13,7 +13,7 @@ const Goal = ({ title, description, priority, dueDate, status, id, onDelete, onU
         setUpdateGoal(prevGoal => ({...prevGoal,[name]:value}))
     }
 
-    const handleFormEditSubmit = (event:React.ChangeEvent<HTMLFormElement>) => {
+    const handleFormEditSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
       onUpdateGoal(updateGoal)
       setIsEditing(false)

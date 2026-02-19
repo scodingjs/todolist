@@ -13,7 +13,7 @@ describe("ALLToDos component functionality test suite", () => {
             description: "Complete Cypress testing",
             status: "done",
             priority: "Medium",
-            dueDate: "2025-04-11"
+            dueDate: "2026-04-11"
         },
         {
             id: 2,
@@ -21,7 +21,7 @@ describe("ALLToDos component functionality test suite", () => {
             description: "CI/CD - to run Cypress",
             status: "in-progress",
             priority: "High",
-            dueDate: "2025-11-11"
+            dueDate: "2026-11-11"
         }
     ]
     beforeEach(() => {
@@ -82,14 +82,71 @@ describe("ALLToDos component functionality test suite", () => {
             cy.mount(<AllToDos
                 todos={mockToDos}
                 onDeleteGoal={onDeleteGoal}
-                onUpdateGoal={onUpdateGoal} 
-                />);
+                onUpdateGoal={onUpdateGoal}
+            />);
             cy.getTestById("todo-card").should("exist");
-            cy.get('[data-id="1"]').within(()=>{
-                cy.contains('button','Delete').click();
+            cy.get('[data-id="1"]').within(() => {
+                cy.contains('button', 'Delete').click();
             })
-             cy.wrap(onDeleteGoal).should('be.calledWith', 1);
+            cy.wrap(onDeleteGoal).should('be.calledWith', 1);
         })
-
+        it("Should perform multiple delete with the right ids", () => {
+            cy.mount(<AllToDos
+                todos={mockToDos}
+                onDeleteGoal={onDeleteGoal}
+                onUpdateGoal={onUpdateGoal}
+            />);
+            cy.getTestById("todo-card").should("exist");
+            cy.get('[data-id="1"]').within(() => {
+                cy.contains('button', 'Delete').click();
+            })
+            cy.wrap(onDeleteGoal).should('be.calledWith', 1);
+            cy.get('[data-id="2"]').within(() => {
+                cy.contains('button', 'Delete').click();
+            })
+            cy.wrap(onDeleteGoal).should('be.calledWith', 2);
+        })
     })
+    describe("Update Functionality test suite", () => {
+        it("should call onUpdate when edit button is clicked", () => {
+            cy.mount(<AllToDos
+                todos={mockToDos}
+                onDeleteGoal={onDeleteGoal}
+                onUpdateGoal={onUpdateGoal}
+            />);
+            cy.getTestById("todo-card").should("exist");
+            cy.get('[data-id="1"]').within(() => {
+                cy.contains('button', 'Edit').click();
+            })
+        })
+        it("should have modal display right values when edit is clicked", () => {
+            const mockData: Todo[] = [
+                {
+                    id: 1,
+                    title: "Component and End-End Testing",
+                    description: "Improve Test coverage",
+                    status: "todo",
+                    priority: "Medium",
+                    dueDate: "2026-04-11"
+                }
+            ]
+            cy.mount(<AllToDos
+                todos={mockData}
+                onDeleteGoal={onDeleteGoal}
+                onUpdateGoal={onUpdateGoal}
+            />);
+            cy.getTestById("todo-card").should("exist");
+            cy.get('[data-id="1"]').
+                find('[data-testid="todo-edit"]').click();
+            cy.getTestById("model-display").should("exist").within(()=>{
+                cy.getTestById("edit-title").should("have.value","Component and End-End Testing")
+                cy.getTestById("edit-description").should("have.value","Improve Test coverage")
+                cy.getTestById("edit-priority").should("have.value","Medium")
+                cy.getTestById("edit-status").should("have.value","todo")
+                cy.getTestById("edit-dueDate").should("have.value","2026-04-11")
+                cy.getTestById("submit-edit").click()
+            })
+        })
+    })
+
 })
