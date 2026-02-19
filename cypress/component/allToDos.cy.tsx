@@ -138,15 +138,69 @@ describe("ALLToDos component functionality test suite", () => {
             cy.getTestById("todo-card").should("exist");
             cy.get('[data-id="1"]').
                 find('[data-testid="todo-edit"]').click();
-            cy.getTestById("model-display").should("exist").within(()=>{
-                cy.getTestById("edit-title").should("have.value","Component and End-End Testing")
-                cy.getTestById("edit-description").should("have.value","Improve Test coverage")
-                cy.getTestById("edit-priority").should("have.value","Medium")
-                cy.getTestById("edit-status").should("have.value","todo")
-                cy.getTestById("edit-dueDate").should("have.value","2026-04-11")
+            cy.getTestById("model-display").should("exist").within(() => {
+                cy.getTestById("edit-title").should("have.value", "Component and End-End Testing")
+                cy.getTestById("edit-description").should("have.value", "Improve Test coverage")
+                cy.getTestById("edit-priority").should("have.value", "Medium")
+                cy.getTestById("edit-status").should("have.value", "todo")
+                cy.getTestById("edit-dueDate").should("have.value", "2026-04-11")
                 cy.getTestById("submit-edit").click()
             })
         })
     })
+    describe('Performance testing alltodos', () => {
+        it("Rendering 10 todos without any issue", () => {
+            const largeTodoList: Todo[] = Array.from({ length: 10 }, (_, i) => ({
+                id: i + 1,
+                title: `Todo ${i + 1}`,
+                description: `Description ${i + 1}`,
+                status: 'todo' as const,
+                priority: 'Medium' as const,
+                dueDate: '2026-11-01'
+            }));
+            cy.mount(<AllToDos todos={largeTodoList}
+                onDeleteGoal={onDeleteGoal}
+                onUpdateGoal={onUpdateGoal}
+            />
+            )
+            cy.get(`[data-id="1"]`).should('exist').and('be.visible')
+            cy.get(`[data-id="10"]`).should('exist').and('be.visible')
+        })
+        it("Rendering 50 todos without any issue", () => {
+            const largeTodoList: Todo[] = Array.from({ length: 50 }, (_, i) => ({
+                id: i + 1,
+                title: `Todo ${i + 1}`,
+                description: `Description ${i + 1}`,
+                status: 'todo' as const,
+                priority: 'Medium' as const,
+                dueDate: '2026-11-01'
+            }));
+            cy.mount(<AllToDos todos={largeTodoList}
+                onDeleteGoal={onDeleteGoal}
+                onUpdateGoal={onUpdateGoal}
+            />
+            )
+            cy.get(`[data-id="1"]`).should('exist').and('be.visible')
+            cy.get(`[data-id="10"]`).should('exist').and('be.visible')
+        })
+        it("Render single todo in a card", () => {
+            const largeTodoList: Todo[] = [{
+                id: 100,
+                title: `Todo 100`,
+                description: `Description 100}`,
+                status: 'todo' as const,
+                priority: 'Medium' as const,
+                dueDate: '2026-11-01'
+            }];
+            cy.mount(<AllToDos todos={largeTodoList}
+                onDeleteGoal={onDeleteGoal}
+                onUpdateGoal={onUpdateGoal}
+            />
+            )
+            cy.get(`[data-id="100"]`).should('exist').and('be.visible')
+           
+        })
+    })
+
 
 })
