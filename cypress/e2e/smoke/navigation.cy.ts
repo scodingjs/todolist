@@ -3,9 +3,7 @@ describe('Page Navigation and Layout', () => {
     cy.visit('/');
   });
 
-  // it('should load the homepage successfully', () => {
-  //   cy.url().should('include', 'localhost:5173');
-  // });
+ 
   it('should load the homepage successfully', () => {
     cy.location('pathname').should('eq', '/');
     // Or verify status code
@@ -39,35 +37,6 @@ describe('Page Navigation and Layout', () => {
         expect(normalized).to.eq("Here you can set your goals/todo's for the day, week, or month.");
       });
   });
-
-  // it('should display form element', () => {
-  //   cy.get('[data-testid="todo-form"]').should('be.visible');
-  //   cy.get('label').first().should('have.attr', "for", "title");
-  //   cy.get('input').first().should('have.attr', "id", "title");
-  //   cy.get('label').eq(1).should('have.attr', "for", "description");
-  //   cy.get('input').eq(1).should('have.attr', "id", "description");
-  //   cy.get('label').eq(2).should('have.attr', "for", "priority");
-  //   cy.get('select').eq(0).should('have.attr', "id", "priority");
-  //   cy.get('label').eq(3).should('have.attr', "for", "status");
-  //   cy.get('select').eq(1).should('have.attr', "id", "status");
-  //   cy.get('label').last().should('have.attr', "for", "dueDate");
-  //   cy.get('input').last().should('have.attr', "id", "dueDate");
-  //   cy.contains('Add Goal').should('be.visible');
-  // });
-  // it('should display form elements', () => {
-  //   cy.get('[data-testid=\"todo-form\"]').should('be.visible');
-  //   cy.get('label[for="title"]').should('exist');
-  //   cy.get('[data-testid=\"title-input\"]').should('be.visible').and('have.attr', "id", "title");
-  //   cy.get('label[for="description"]').should('exist');
-  //   cy.get('[data-testid=\"description-input\"]').should('be.visible').and('have.attr', "id", "description");
-  //   cy.get('label[for="priority"]').should('exist');
-  //   cy.get('[data-testid=\"priority-select\"]').should('be.visible').and('have.attr', "id", "priority");
-  //   cy.get('label[for="status"]').should('exist');
-  //   cy.get('[data-testid=\"status-select\"]').should('be.visible').and('have.attr', "id", "status");
-  //   cy.get('label[for="dueDate"]').should('exist');
-  //   cy.get('[data-testid=\"due-date-input\"]').should('be.visible').and('have.attr', "id", "dueDate");
-  //   cy.get('[data-testid=\"add-todo\"]').should('be.visible');
-  // });
 
   it('should display form elements', () => {
     cy.get('[data-testid="todo-form"]',{timeout:5000}).should('be.visible');
@@ -109,3 +78,35 @@ describe('Page Navigation and Layout', () => {
   });
 
 });
+
+ // it('should load the homepage successfully', () => {
+  //   cy.url().should('include', 'localhost:5173');
+  // });
+  // it('should display form element', () => {
+  //   cy.get('[data-testid="todo-form"]').should('be.visible');
+  //   cy.get('label').first().should('have.attr', "for", "title");
+  //   cy.get('input').first().should('have.attr', "id", "title");
+  //   cy.get('label').eq(1).should('have.attr', "for", "description");
+  //   cy.get('input').eq(1).should('have.attr', "id", "description");
+  //   cy.get('label').eq(2).should('have.attr', "for", "priority");
+  //   cy.get('select').eq(0).should('have.attr', "id", "priority");
+  //   cy.get('label').eq(3).should('have.attr', "for", "status");
+  //   cy.get('select').eq(1).should('have.attr', "id", "status");
+  //   cy.get('label').last().should('have.attr', "for", "dueDate");
+  //   cy.get('input').last().should('have.attr', "id", "dueDate");
+  //   cy.contains('Add Goal').should('be.visible');
+  // });
+  // it('should display form elements', () => {
+  //   cy.get('[data-testid=\"todo-form\"]').should('be.visible');
+  //   cy.get('label[for="title"]').should('exist');
+  //   cy.get('[data-testid=\"title-input\"]').should('be.visible').and('have.attr', "id", "title");
+  //   cy.get('label[for="description"]').should('exist');
+  //   cy.get('[data-testid=\"description-input\"]').should('be.visible').and('have.attr', "id", "description");
+  //   cy.get('label[for="priority"]').should('exist');
+  //   cy.get('[data-testid=\"priority-select\"]').should('be.visible').and('have.attr', "id", "priority");
+  //   cy.get('label[for="status"]').should('exist');
+  //   cy.get('[data-testid=\"status-select\"]').should('be.visible').and('have.attr', "id", "status");
+  //   cy.get('label[for="dueDate"]').should('exist');
+  //   cy.get('[data-testid=\"due-date-input\"]').should('be.visible').and('have.attr', "id", "dueDate");
+  //   cy.get('[data-testid=\"add-todo\"]').should('be.visible');
+  // });

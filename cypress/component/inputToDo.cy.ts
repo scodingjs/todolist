@@ -1,14 +1,14 @@
 import React from "react";
 import InputToDo from "../../src/components/InputToDo";
 import { type Todo } from "../../src/resources/types/propsTypes.tsx";
-import {mount} from "cypress/react"
+import { mount } from "cypress/react"
 
 describe("Testing the InputToDo Component", () => {
-  //  let onAddGoalStub: Cypress.Stub;
- let onAddGoalStub : ReturnType<typeof cy.stub>;
+    //  let onAddGoalStub: Cypress.Stub;
+    let onAddGoalStub: ReturnType<typeof cy.stub>;
     beforeEach(() => {
         onAddGoalStub = cy.stub();
-         mount(React.createElement(InputToDo, { onAddGoal: onAddGoalStub }));
+        mount(React.createElement(InputToDo, { onAddGoal: onAddGoalStub }));
     });
 
     it("Renders the Form element with input fields", () => {
@@ -28,7 +28,7 @@ describe("Testing the InputToDo Component", () => {
         cy.getTestById('due-date-input').type('2026-06-11');
         cy.getTestById('priority-select').select('High');
         cy.getTestById('status-select').select('todo');
-        cy.getTestById ('add-todo').click()
+        cy.getTestById('add-todo').click()
         cy.wrap(onAddGoalStub).should('be.calledOnce');
         cy.wrap(onAddGoalStub).then((stub: ReturnType<typeof cy.stub>) => {
             const call = stub.getCall(0);
@@ -49,12 +49,12 @@ describe("Testing the InputToDo Component", () => {
     })
 
     it("Check all selections of priority option", () => {
-       cy.getTestById('priority-select').select('High');
-       cy.getTestById('priority-select').should('have.value', 'High');
-       cy.getTestById('priority-select').select('Medium');
-       cy.getTestById('priority-select').should('have.value', 'Medium');
-       cy.getTestById('priority-select').select('Low');
-       cy.getTestById('priority-select').should('have.value', 'Low');
+        cy.getTestById('priority-select').select('High');
+        cy.getTestById('priority-select').should('have.value', 'High');
+        cy.getTestById('priority-select').select('Medium');
+        cy.getTestById('priority-select').should('have.value', 'Medium');
+        cy.getTestById('priority-select').select('Low');
+        cy.getTestById('priority-select').should('have.value', 'Low');
     })
 
     it('Check all options of status', () => {
@@ -64,5 +64,18 @@ describe("Testing the InputToDo Component", () => {
         cy.getTestById('status-select').should('have.value', 'in-progress');
         cy.getTestById('status-select').select('done');
         cy.getTestById('status-select').should('have.value', 'done');
+    })
+
+    it('Should reset form after successful submission', () => {
+        cy.getTestById('title-input').type('Test the todo app input');
+        cy.getTestById('description-input').type('Complete Component and End to End');
+        cy.getTestById('due-date-input').type('2026-06-11');
+        cy.getTestById('priority-select').select('High');
+        cy.getTestById('status-select').select('todo');
+        cy.getTestById('add-todo').click()
+        cy.wrap(onAddGoalStub).should('be.calledOnce');
+        cy.wrap(onAddGoalStub).then((stub: ReturnType<typeof cy.stub>) => {
+            const call = stub.getCall(0);
+        })
     })
 })

@@ -23,7 +23,7 @@ const Goal = ({ title, description, priority, dueDate, status, id, onDelete, onU
             bg={status === "todo" ? "info" : 
                 status === "in-progress" ? "warning" : "success"}
             className="mb-2 goal-card"
-            data-testid="todo-item"
+            data-testid="todo-card"
             data-id={id}>
             <Card.Header>
                 <h3 data-testid="todo-priority">{priority}</h3>
