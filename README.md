@@ -60,8 +60,8 @@
  ![Screenshot](https://github.com/scodingjs/todolist/blob/main/src/assets/lighthouse.png)
 
 
- ![Cypress Component]
- (https://github.com/scodingjs/todolist/blob/main/src/assets/cypress_component.png)
+ ![Cypress Component](https://github.com/scodingjs/todolist/blob/testing/src/assets/cypress_component.png)
+
 
 ## 📋 **TodoList App Features**
 
