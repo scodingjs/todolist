@@ -62,7 +62,6 @@ const InputToDo = ({ onAddGoal }: InputToDoProps) => {
                         <option value="Medium">Medium</option>
                         <option value="Low">Low</option>
                     </Form.Select>
-
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="status">
                     <Form.Label>Status</Form.Label>
