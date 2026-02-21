@@ -17,7 +17,7 @@ describe('InputToDo Component - Enhanced Test Suite', () => {
   });
 
   // ============ EXISTING TESTS (From Original) ============
-  
+
   it('Renders the Form element with input fields', () => {
     cy.get('[data-testid="section-title"]').should('have.text', 'Add to your TODO List').should('be.visible');
     cy.get('[data-testid="section-description"]').should('contain', 'Here you can set your goals/todo').should('be.visible');
@@ -133,7 +133,7 @@ describe('InputToDo Component - Enhanced Test Suite', () => {
       // First submission
       cy.get('[data-testid="add-todo"]').click();
       cy.contains('All fields are required').should('be.visible');
-      
+
       // Wait for error to disappear
       cy.wait(3100);
       cy.contains('All fields are required').should('not.exist');
@@ -219,7 +219,7 @@ describe('InputToDo Component - Enhanced Test Suite', () => {
         cy.get('[data-testid="status-select"]').select(todo.status);
         cy.get('[data-testid="due-date-input"]').type(todo.date);
         cy.get('[data-testid="add-todo"]').click();
-        
+
         if (index < todosToAdd.length - 1) {
           cy.wait(10); // Small delay between submissions
         }

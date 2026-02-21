@@ -1,4 +1,4 @@
-import AllToDos from "../../src/components/AllToDos.tsx";
+ import AllToDos from "../../src/components/AllToDos.tsx";
 import { mount } from 'cypress/react';
 import { type Todo } from "../../src/resources/types/propsTypes.tsx"
 
