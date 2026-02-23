@@ -19,5 +19,14 @@ export default tseslint.config([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    "rules": {
+      "no-unused-vars": "off",
+      // Use the TypeScript rule and set it to warn
+      "@typescript-eslint/no-unused-vars": "warn",
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
+    }
   },
 ])
