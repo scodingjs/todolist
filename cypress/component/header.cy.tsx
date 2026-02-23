@@ -1,5 +1,4 @@
 import React from "react";
-import { mount } from "cypress/react"
 import Header from "../../src/components/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
 

@@ -35,3 +35,4 @@ cypress/component/ref.cy.tsx
 cypress/screenshots/
 reference/*
 CYPRESS_README_DOC.md
+cypress/reference/*

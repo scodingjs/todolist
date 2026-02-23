@@ -74,9 +74,6 @@ describe("Testing the InputToDo Component", () => {
             cy.getTestById('status-select').select('todo');
             cy.getTestById('add-todo').click()
             cy.wrap(onAddGoalStub).should('be.calledOnce');
-            cy.wrap(onAddGoalStub).then((stub: ReturnType<typeof cy.stub>) => {
-                const call = stub.getCall(0);
-            })
             cy.get('[data-testid="title-input"]').should('have.value', '');
             cy.get('[data-testid="description-input"]').should('have.value', '');
             cy.get('[data-testid="due-date-input"]').should('have.value', '');
